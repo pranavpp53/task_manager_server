@@ -1,0 +1,9 @@
+MVC (model view controller)
+___________________________
+
+media
+___________________________
+
+body - form-data type
+header data   key-content-type
+              value-multipart or formdata
