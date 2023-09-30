@@ -1,26 +1,27 @@
 const express=require('express')
-const { employeeRegister, getAllEmployees, getSingleEmployee,deleteEmployee, editUser } = require('../controllers/logic')
-const upload = require('../multerConfig/storageConfig')
+const { addTask, showAllTask, getSingleTask, deleteTask, changeStatus, editTask } = require('../controllers/logic')
+
 
 
 //create an object for router class in express
 const router=new express.Router()
 
-//route for register new employee
-router.post('/employees/register',upload.single('user_profile'),employeeRegister)
+//route for register add task
+router.post('/api/tasks/addTask',addTask)
 
-//get all employees
-router.get('/employees/getEmployees',getAllEmployees)
+//route for get all task
+router.get('/api/tasks/getAllTasks',showAllTask)
 
-//get single employee data
-router.get('/employees/getSingleEmployee/:id',getSingleEmployee)
+//router for get single task
+router.get('/api/tasks/getSingleTask/:id',getSingleTask)
 
-//delete employee
-router.delete('/employees/deleteEmp/:id',deleteEmployee)
+//router for delete task
+router.delete('/api/tasks/deleteTask/:id',deleteTask)
 
-//edit employee
-router.post('/employees/editEmployee/:id',upload.single('user_profile'),editUser)
+//status update
+router.post('/api/tasks/changeStatus',changeStatus)
 
-
+// edit task details
+router.put('/api/tasks/editTask/:id',editTask)
 
 module.exports=router
